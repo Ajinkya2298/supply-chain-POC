@@ -2,9 +2,7 @@ package com.kotlinmonorepo.dropwizardapp.com.kotlinmonorepo.dropwizardapp.resour
 
 import com.codahale.metrics.annotation.Timed
 import com.kotlinmonorepo.dropwizardapp.com.kotlinmonorepo.dropwizardapp.api.VendorsModel
-import com.kotlinmonorepo.dropwizardapp.com.kotlinmonorepo.dropwizardapp.services.VendorService
-import com.kotlinmonorepo.dropwizardapp.core.dao.DepartmentDao
-import com.kotlinmonorepo.dropwizardapp.core.dao.DepartmentDaoImpl
+import com.kotlinmonorepo.dropwizardapp.com.kotlinmonorepo.dropwizardapp.services.vendor.VendorService
 import java.util.*
 import javax.ws.rs.*
 import javax.ws.rs.core.MediaType

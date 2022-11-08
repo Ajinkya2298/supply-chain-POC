@@ -1,4 +1,4 @@
-package com.kotlinmonorepo.dropwizardapp.com.kotlinmonorepo.dropwizardapp.services
+package com.kotlinmonorepo.dropwizardapp.com.kotlinmonorepo.dropwizardapp.services.vendor
 
 import com.kotlinmonorepo.dropwizardapp.com.kotlinmonorepo.dropwizardapp.api.VendorsModel
 import com.kotlinmonorepo.dropwizardapp.com.kotlinmonorepo.dropwizardapp.entities.VendorsEntity
