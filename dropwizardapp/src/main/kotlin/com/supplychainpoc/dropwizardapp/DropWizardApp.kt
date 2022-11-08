@@ -1,5 +1,6 @@
 package com.supplychainpoc.dropwizardapp
 
+import com.supplychainpoc.dropwizardapp.resources.VendorsResource
 import com.supplychainpoc.dropwizardapp.health.AppHealthCheck
 import com.supplychainpoc.dropwizardapp.resources.DepartmentResource
 import com.supplychainpoc.dropwizardapp.resources.PingResource
@@ -22,6 +23,7 @@ class DropWizardApp : Application<DropWizardAppConfiguration>() {
         env.healthChecks().register("default", AppHealthCheck())
         env.jersey().register(PingResource())
         env.jersey().register(DepartmentResource())
+        env.jersey().register(VendorsResource())
     }
 
     override fun getName(): String {

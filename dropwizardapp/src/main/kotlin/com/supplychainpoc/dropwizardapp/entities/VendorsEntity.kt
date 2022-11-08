@@ -1,4 +1,4 @@
-package com.supplychainpoc.dropwizardapp.com.supplychainpoc.dropwizardapp.entities
+package com.supplychainpoc.dropwizardapp.entities
 
 import java.util.*
 

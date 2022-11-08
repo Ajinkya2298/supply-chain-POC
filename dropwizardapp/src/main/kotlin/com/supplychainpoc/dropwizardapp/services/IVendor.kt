@@ -1,7 +1,7 @@
-package com.supplychainpoc.dropwizardapp.com.supplychainpoc.dropwizardapp.services
+package com.supplychainpoc.dropwizardapp.services
 
-import com.supplychainpoc.dropwizardapp.com.supplychainpoc.dropwizardapp.api.VendorsModel
-import com.supplychainpoc.dropwizardapp.com.supplychainpoc.dropwizardapp.entities.VendorsEntity
+import com.supplychainpoc.dropwizardapp.api.VendorsModel
+import com.supplychainpoc.dropwizardapp.entities.VendorsEntity
 import java.util.*
 
 

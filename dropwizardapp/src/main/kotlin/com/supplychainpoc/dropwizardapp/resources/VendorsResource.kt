@@ -1,8 +1,8 @@
-package com.supplychainpoc.dropwizardapp.com.supplychainpoc.dropwizardapp.resources
+package com.supplychainpoc.dropwizardapp.resources
 
 import com.codahale.metrics.annotation.Timed
-import com.supplychainpoc.dropwizardapp.com.supplychainpoc.dropwizardapp.api.VendorsModel
-import com.supplychainpoc.dropwizardapp.com.supplychainpoc.dropwizardapp.services.VendorService
+import com.supplychainpoc.dropwizardapp.api.VendorsModel
+import com.supplychainpoc.dropwizardapp.services.VendorService
 import java.util.*
 import javax.ws.rs.*
 import javax.ws.rs.core.MediaType
