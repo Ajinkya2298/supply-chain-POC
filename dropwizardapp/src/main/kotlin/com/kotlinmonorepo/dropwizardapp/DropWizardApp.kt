@@ -1,5 +1,6 @@
 package com.kotlinmonorepo.dropwizardapp
 
+import com.kotlinmonorepo.dropwizardapp.com.kotlinmonorepo.dropwizardapp.resources.VendorsResource
 import com.kotlinmonorepo.dropwizardapp.health.AppHealthCheck
 import com.kotlinmonorepo.dropwizardapp.resources.DepartmentResource
 import com.kotlinmonorepo.dropwizardapp.resources.PingResource
@@ -22,6 +23,7 @@ class DropWizardApp : Application<DropWizardAppConfiguration>() {
         env.healthChecks().register("default", AppHealthCheck())
         env.jersey().register(PingResource())
         env.jersey().register(DepartmentResource())
+        env.jersey().register(VendorsResource())
     }
 
     override fun getName(): String {
