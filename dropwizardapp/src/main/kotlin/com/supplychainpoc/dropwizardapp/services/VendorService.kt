@@ -1,7 +1,7 @@
-package com.kotlinmonorepo.dropwizardapp.com.kotlinmonorepo.dropwizardapp.services
+package com.supplychainpoc.dropwizardapp.com.supplychainpoc.dropwizardapp.services
 
-import com.kotlinmonorepo.dropwizardapp.com.kotlinmonorepo.dropwizardapp.api.VendorsModel
-import com.kotlinmonorepo.dropwizardapp.com.kotlinmonorepo.dropwizardapp.entities.VendorsEntity
+import com.supplychainpoc.dropwizardapp.com.supplychainpoc.dropwizardapp.api.VendorsModel
+import com.supplychainpoc.dropwizardapp.com.supplychainpoc.dropwizardapp.entities.VendorsEntity
 import java.util.*
 
 

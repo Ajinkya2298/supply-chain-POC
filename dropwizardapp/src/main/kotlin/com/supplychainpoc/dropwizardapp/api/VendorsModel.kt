@@ -1,4 +1,4 @@
-package com.kotlinmonorepo.dropwizardapp.com.kotlinmonorepo.dropwizardapp.api
+package com.supplychainpoc.dropwizardapp.com.supplychainpoc.dropwizardapp.api
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import java.util.*

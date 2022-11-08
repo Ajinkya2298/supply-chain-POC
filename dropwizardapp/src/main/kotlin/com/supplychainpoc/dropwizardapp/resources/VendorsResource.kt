@@ -1,10 +1,8 @@
-package com.kotlinmonorepo.dropwizardapp.com.kotlinmonorepo.dropwizardapp.resources
+package com.supplychainpoc.dropwizardapp.com.supplychainpoc.dropwizardapp.resources
 
 import com.codahale.metrics.annotation.Timed
-import com.kotlinmonorepo.dropwizardapp.com.kotlinmonorepo.dropwizardapp.api.VendorsModel
-import com.kotlinmonorepo.dropwizardapp.com.kotlinmonorepo.dropwizardapp.services.VendorService
-import com.kotlinmonorepo.dropwizardapp.core.dao.DepartmentDao
-import com.kotlinmonorepo.dropwizardapp.core.dao.DepartmentDaoImpl
+import com.supplychainpoc.dropwizardapp.com.supplychainpoc.dropwizardapp.api.VendorsModel
+import com.supplychainpoc.dropwizardapp.com.supplychainpoc.dropwizardapp.services.VendorService
 import java.util.*
 import javax.ws.rs.*
 import javax.ws.rs.core.MediaType
