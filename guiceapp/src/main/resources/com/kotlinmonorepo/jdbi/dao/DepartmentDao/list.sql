@@ -1,0 +1,2 @@
+SELECT *
+FROM main.department;
