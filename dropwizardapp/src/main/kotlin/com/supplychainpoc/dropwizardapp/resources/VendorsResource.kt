@@ -1,13 +1,13 @@
 package com.supplychainpoc.dropwizardapp.resources
 
 import com.codahale.metrics.annotation.Timed
+import com.supplychainpoc.dropwizardapp.api.VendorProductModel
 import com.supplychainpoc.dropwizardapp.api.VendorsModel
 import com.supplychainpoc.dropwizardapp.services.VendorService
 import java.util.*
 import javax.ws.rs.*
 import javax.ws.rs.core.MediaType
 import javax.ws.rs.core.Response
-
 
 @Path("/vendors")
 class VendorsResource {
@@ -41,10 +41,34 @@ class VendorsResource {
         @PathParam("id")
         id: UUID,
         vendor: VendorsModel
-    ):Response {
-        return if(vendorService.update(id,vendor))
+    ): Response {
+        return if (vendorService.update(id, vendor)) {
             Response.status(Response.Status.OK).entity("Updated Successfully!").build()
-        else Response.status(Response.Status.NOT_FOUND).build()
+        } else Response.status(Response.Status.NOT_FOUND).build()
+    }
 
+    @POST
+    @Path("/{vendorId}/product")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Timed
+    fun createVendorProduct(
+        @PathParam("vendorId") vendorId: UUID,
+        vendor: VendorProductModel
+    ): Response {
+        return Response.status(Response.Status.OK).entity(vendor).build()
+    }
+
+    @POST
+    @Path("/{vendorId}/product/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Timed
+    fun updateVendorProduct(
+        @PathParam("vendorId") vendorId: UUID,
+        @PathParam("id") vendorProductId: UUID,
+        vendor: VendorProductModel
+    ): Response {
+        return Response.status(Response.Status.OK).entity(vendor).build()
     }
 }
