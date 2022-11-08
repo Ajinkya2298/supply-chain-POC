@@ -1,8 +1,8 @@
 plugins {
-    id("com.kotlinmonorepo.kotlin-common-conventions")
+    id("com.supplychainpoc.kotlin-common-conventions")
 }
 
-group = "com.kotlinmonorepo"
+group = "com.supplychainpoc"
 version = "0.0.1"
 
 dependencies {
@@ -15,7 +15,7 @@ dependencies {
 
 tasks.jar {
     manifest {
-        attributes["Main-Class"] = "com.kotlinmonorepo.dropwizardapp.DropWizardApp"
+        attributes["Main-Class"] = "com.supplychainpoc.dropwizardapp.DropWizardApp"
     }
     configurations["compileClasspath"].forEach { file: File ->
         from(zipTree(file.absoluteFile))

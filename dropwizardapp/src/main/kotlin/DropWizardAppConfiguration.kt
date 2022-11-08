@@ -1,4 +1,4 @@
-package com.kotlinmonorepo.dropwizardapp
+package com.supplychainpoc.dropwizardapp
 
 import io.dropwizard.Configuration
 

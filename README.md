@@ -6,7 +6,7 @@
 
 # Initalise
 ```shell
-$ mkdir kotlin-monorepo && cd kotlin-monorepo
+$ mkdir supply-chain-poc && cd supply-chain-poc
 
 $ gradle init
 
@@ -38,9 +38,9 @@ Enter selection (default: Kotlin) [1..2] 2
 
 Generate build using new APIs and behavior (some features may change in the next minor release)? (default: no) [yes, no] 
 
-Project name (default: kotlin-monorepo): 
+Project name (default: supply-chain-poc): 
 
-Source package (default: kotlin.monorepo): com.kotlinmonorepo
+Source package (default: kotlin.monorepo): com.supplychainpoc
 
 > Task :init
 Get more help with your project: https://docs.gradle.org/7.4.2/samples/sample_building_kotlin_applications_multi_project.html

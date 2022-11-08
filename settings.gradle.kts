@@ -7,7 +7,5 @@
  * in the user manual at https://docs.gradle.org/7.4.2/userguide/multi_project_builds.html
  */
 
-rootProject.name = "kotlin-monorepo"
-include("rdbms")
-include("guiceapp")
+rootProject.name = "supply-chain-poc"
 include("dropwizardapp")
