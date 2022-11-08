@@ -4,6 +4,7 @@ import com.supplychainpoc.dropwizardapp.entities.Product
 import com.supplychainpoc.dropwizardapp.exceptions.CustomException
 import com.supplychainpoc.dropwizardapp.exceptions.Errors
 import com.supplychainpoc.dropwizardapp.seed.SeedData
+import java.util.UUID
 
 class ProductService {
     private val products: MutableSet<Product> = SeedData.products
@@ -12,7 +13,7 @@ class ProductService {
         products.add(product)
     }
 
-    fun getProductById(id: String): Product {
+    fun getProductById(id: UUID): Product {
         products.forEach {
             if (it.id == id) {
                 return it

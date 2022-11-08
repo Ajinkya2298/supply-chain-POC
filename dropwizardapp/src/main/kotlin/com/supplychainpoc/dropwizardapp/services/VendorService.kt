@@ -1,6 +1,7 @@
 
 package com.supplychainpoc.dropwizardapp.services
 
+import com.supplychainpoc.dropwizardapp.api.VendorProductModel
 import com.supplychainpoc.dropwizardapp.api.VendorsModel
 import com.supplychainpoc.dropwizardapp.entities.VendorsEntity
 import java.util.*
@@ -22,12 +23,12 @@ class VendorService : IVendor {
         return vendors.find { vendor -> vendor.id == id }
     }
 
-    override fun update(id: UUID, updatedVendor: VendorsModel): Boolean {
+    override fun update(id: UUID, department: VendorsModel): Boolean {
         var updated = false
         val index = vendors.indexOfFirst { vendor -> vendor.id == id }
         if (index > -1) {
-            vendors[index].name = updatedVendor.name
-            vendors[index].fulfillmentAreas = updatedVendor.fulfillmentAreas
+            vendors[index].name = department.name
+            vendors[index].fulfillmentAreas = department.fulfillmentAreas
             updated = true
         }
         return updated

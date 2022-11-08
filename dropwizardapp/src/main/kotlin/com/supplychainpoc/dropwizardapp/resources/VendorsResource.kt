@@ -3,7 +3,11 @@ package com.supplychainpoc.dropwizardapp.resources
 import com.codahale.metrics.annotation.Timed
 import com.supplychainpoc.dropwizardapp.api.VendorProductModel
 import com.supplychainpoc.dropwizardapp.api.VendorsModel
+import com.supplychainpoc.dropwizardapp.com.supplychainpoc.dropwizardapp.api.VendorProductPatchModel
+import com.supplychainpoc.dropwizardapp.com.supplychainpoc.dropwizardapp.services.VendorProductService
+import com.supplychainpoc.dropwizardapp.exceptions.Errors
 import com.supplychainpoc.dropwizardapp.services.VendorService
+import java.lang.Exception
 import java.util.*
 import javax.ws.rs.*
 import javax.ws.rs.core.MediaType
@@ -13,6 +17,7 @@ import javax.ws.rs.core.Response
 class VendorsResource {
 
     private val vendorService: VendorService = VendorService()
+    private val vendorProductService = VendorProductService()
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
@@ -54,9 +59,14 @@ class VendorsResource {
     @Timed
     fun createVendorProduct(
         @PathParam("vendorId") vendorId: UUID,
-        vendor: VendorProductModel
+        vender: VendorProductModel
     ): Response {
-        return Response.status(Response.Status.OK).entity(vendor).build()
+        return try {
+            val res = vendorProductService.create(vendorId, vender)
+            return Response.status(Response.Status.OK).entity(res).build()
+        } catch (e: Exception) {
+            generateExceptionResponse(e)
+        }
     }
 
     @POST
@@ -67,8 +77,27 @@ class VendorsResource {
     fun updateVendorProduct(
         @PathParam("vendorId") vendorId: UUID,
         @PathParam("id") vendorProductId: UUID,
-        vendor: VendorProductModel
+        vendor: VendorProductPatchModel
     ): Response {
-        return Response.status(Response.Status.OK).entity(vendor).build()
+        return try {
+            val res = vendorProductService.update(vendorProductId, vendorId, vendor)
+            return Response.status(Response.Status.OK).entity(res).build()
+        } catch (e: Exception) {
+            generateExceptionResponse(e)
+        }
+    }
+
+    private fun generateExceptionResponse(e: Exception): Response {
+        return when (e.message) {
+            Errors.UNIT_NOT_FOUND -> {
+                Response.status(Response.Status.NOT_FOUND).entity(e.toString()).build()
+            }
+            Errors.NO_SUCH_VENDOR_PRODUCT_FOUND -> {
+                Response.status(Response.Status.NOT_FOUND).entity(e.toString()).build()
+            }
+            else -> {
+                Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.toString()).build()
+            }
+        }
     }
 }

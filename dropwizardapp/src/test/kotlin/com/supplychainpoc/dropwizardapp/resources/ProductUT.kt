@@ -7,13 +7,14 @@ import com.supplychainpoc.dropwizardapp.services.ProductService
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import java.util.UUID
 
 class ProductUT {
 
     @Test
     fun `get product by valid id`() {
         val productService = ProductService()
-        val productById = productService.getProductById("P_SkimmedMilk")
+        val productById = productService.getProductById(SeedData.skimmedMilk.id)
 
         Assertions.assertEquals(productById.id, SeedData.skimmedMilk.id)
         Assertions.assertEquals(productById.name, SeedData.skimmedMilk.name)
@@ -25,7 +26,7 @@ class ProductUT {
         val productService = ProductService()
 
         val assertThrows = assertThrows<CustomException> {
-            productService.getProductById("NotThere")
+            productService.getProductById(UUID.randomUUID())
         }
 
         Assertions.assertEquals(assertThrows.message, Errors.PRODUCT_NOT_FOUND)

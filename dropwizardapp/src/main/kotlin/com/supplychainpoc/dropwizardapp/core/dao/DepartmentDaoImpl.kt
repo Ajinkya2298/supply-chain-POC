@@ -22,11 +22,11 @@ class DepartmentDaoImpl : DepartmentDao {
         return departments.find { department -> department.id == id }
     }
 
-    override fun update(id: UUID, updatedDepartment: DepartmentModel): Boolean {
+    override fun update(id: UUID, department: DepartmentModel): Boolean {
         var updated = false
         val index = departments.indexOfFirst { department -> department.id == id }
         if (index > -1) {
-            departments[index].name = updatedDepartment.name
+            departments[index].name = department.name
             updated = true
         }
         return updated
