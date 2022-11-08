@@ -1,4 +1,6 @@
-package com.kotlinmonorepo.dropwizardapp.com.kotlinmonorepo.dropwizardapp.entities
+package com.supplychainpoc.dropwizardapp.entities
+
+import com.supplychainpoc.dropwizardapp.entities.ProductType
 
 
 data class Product (

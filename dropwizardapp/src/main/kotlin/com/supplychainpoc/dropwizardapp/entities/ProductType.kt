@@ -1,4 +1,4 @@
-package com.kotlinmonorepo.dropwizardapp.com.kotlinmonorepo.dropwizardapp.entities
+package com.supplychainpoc.dropwizardapp.entities
 
 data class ProductType(
     val id:String,
