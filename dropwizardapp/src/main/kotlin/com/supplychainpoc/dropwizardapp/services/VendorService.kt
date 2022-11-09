@@ -1,9 +1,11 @@
 
 package com.supplychainpoc.dropwizardapp.services
 
-import com.supplychainpoc.dropwizardapp.api.VendorProductModel
 import com.supplychainpoc.dropwizardapp.api.VendorsModel
 import com.supplychainpoc.dropwizardapp.entities.VendorsEntity
+import com.supplychainpoc.dropwizardapp.entities.update
+import com.supplychainpoc.dropwizardapp.exceptions.CustomException
+import com.supplychainpoc.dropwizardapp.exceptions.Errors
 import java.util.*
 
 class VendorService : IVendor {
@@ -32,5 +34,13 @@ class VendorService : IVendor {
             updated = true
         }
         return updated
+    }
+
+    override fun update2(id: UUID, vendor: VendorsModel): VendorsEntity {
+        val vendorEntity = vendors.find {
+            it.id == id
+        } ?: throw CustomException(Errors.NO_SUCH_VENDOR_FOUND)
+        vendorEntity.update(vendor)
+        return vendorEntity
     }
 }

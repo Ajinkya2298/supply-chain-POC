@@ -9,4 +9,6 @@ interface IVendor {
     fun list(): List<VendorsEntity>
     fun get(id: UUID): VendorsEntity?
     fun update(id: UUID, department: VendorsModel): Boolean
+
+    fun update2(id: UUID, vendor: VendorsModel): VendorsEntity
 }

@@ -13,6 +13,8 @@ import javax.ws.rs.*
 import javax.ws.rs.core.MediaType
 import javax.ws.rs.core.Response
 
+const val FF_RESOURCE = true
+
 @Path("/vendors")
 class VendorsResource {
 
@@ -47,9 +49,18 @@ class VendorsResource {
         id: UUID,
         vendor: VendorsModel
     ): Response {
-        return if (vendorService.update(id, vendor)) {
-            Response.status(Response.Status.OK).entity("Updated Successfully!").build()
-        } else Response.status(Response.Status.NOT_FOUND).build()
+        return if (FF_RESOURCE) {
+            try {
+                val entity = vendorService.update2(id, vendor)
+                Response.status(Response.Status.OK).entity(entity).build()
+            } catch (e: Exception) {
+                Errors.generateExceptionResponse(e)
+            }
+        } else {
+            if (vendorService.update(id, vendor)) {
+                Response.status(Response.Status.OK).entity("Updated Successfully!").build()
+            } else Response.status(Response.Status.NOT_FOUND).build()
+        }
     }
 
     @POST
@@ -65,7 +76,7 @@ class VendorsResource {
             val res = vendorProductService.create(vendorId, vender)
             return Response.status(Response.Status.OK).entity(res).build()
         } catch (e: Exception) {
-            generateExceptionResponse(e)
+            Errors.generateExceptionResponse(e)
         }
     }
 
@@ -83,21 +94,7 @@ class VendorsResource {
             val res = vendorProductService.update(vendorProductId, vendorId, vendor)
             return Response.status(Response.Status.OK).entity(res).build()
         } catch (e: Exception) {
-            generateExceptionResponse(e)
-        }
-    }
-
-    private fun generateExceptionResponse(e: Exception): Response {
-        return when (e.message) {
-            Errors.UNIT_NOT_FOUND -> {
-                Response.status(Response.Status.NOT_FOUND).entity(e.toString()).build()
-            }
-            Errors.NO_SUCH_VENDOR_PRODUCT_FOUND -> {
-                Response.status(Response.Status.NOT_FOUND).entity(e.toString()).build()
-            }
-            else -> {
-                Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.toString()).build()
-            }
+            Errors.generateExceptionResponse(e)
         }
     }
 }
