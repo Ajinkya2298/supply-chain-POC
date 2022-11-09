@@ -1,5 +1,6 @@
 package com.supplychainpoc.dropwizardapp
 
+import com.supplychainpoc.dropwizardapp.com.supplychainpoc.dropwizardapp.resources.OrderResource
 import com.supplychainpoc.dropwizardapp.resources.VendorsResource
 import com.supplychainpoc.dropwizardapp.health.AppHealthCheck
 import com.supplychainpoc.dropwizardapp.resources.DepartmentResource
@@ -23,6 +24,7 @@ class DropWizardApp : Application<DropWizardAppConfiguration>() {
         env.healthChecks().register("default", AppHealthCheck())
         env.jersey().register(PingResource())
         env.jersey().register(DepartmentResource())
+        env.jersey().register(OrderResource())
         env.jersey().register(VendorsResource())
     }
 
