@@ -80,7 +80,7 @@ class VendorsResource {
         }
     }
 
-    @POST
+    @PATCH
     @Path("/{vendorId}/product/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
