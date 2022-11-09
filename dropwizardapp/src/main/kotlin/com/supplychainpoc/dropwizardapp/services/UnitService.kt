@@ -5,7 +5,7 @@ import com.supplychainpoc.dropwizardapp.exceptions.CustomException
 import com.supplychainpoc.dropwizardapp.exceptions.Errors
 import com.supplychainpoc.dropwizardapp.seed.SeedData
 
-class UnitService {
+object UnitService {
     private val units = SeedData.units
 
     fun findBySymbol(symbol: String): Unit { // ktlint-disable no-unit-return

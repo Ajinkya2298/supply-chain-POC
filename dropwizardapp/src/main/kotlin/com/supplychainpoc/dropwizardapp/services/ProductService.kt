@@ -6,7 +6,7 @@ import com.supplychainpoc.dropwizardapp.exceptions.Errors
 import com.supplychainpoc.dropwizardapp.seed.SeedData
 import java.util.UUID
 
-class ProductService {
+object ProductService {
     private val products: MutableSet<Product> = SeedData.products
 
     fun addProduct(product: Product) {

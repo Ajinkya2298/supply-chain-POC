@@ -8,7 +8,7 @@ import com.supplychainpoc.dropwizardapp.exceptions.CustomException
 import com.supplychainpoc.dropwizardapp.exceptions.Errors
 import java.util.UUID
 
-class VendorProductService {
+object VendorProductService {
 
     private val vendorsProducts = mutableListOf<VendorProductEntity>()
 

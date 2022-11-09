@@ -3,6 +3,7 @@ package com.supplychainpoc.dropwizardapp.com.supplychainpoc.dropwizardapp.resour
 import com.codahale.metrics.annotation.Timed
 import com.supplychainpoc.dropwizardapp.api.OrderModel
 import com.supplychainpoc.dropwizardapp.enums.OrderStatus
+import com.supplychainpoc.dropwizardapp.exceptions.Errors
 import com.supplychainpoc.dropwizardapp.services.OrderService
 import java.util.UUID
 import javax.ws.rs.Consumes
@@ -18,7 +19,7 @@ import javax.ws.rs.core.Response
 @Path("/orders")
 class OrderResource {
 
-    private val orderService: OrderService = OrderService()
+    private val orderService: OrderService = OrderService
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
@@ -66,10 +67,10 @@ class OrderResource {
         status: OrderStatus
     ): Response {
         return try {
-            orderService.updateStatus(id,status)
-            Response.status(Response.Status.NO_CONTENT).entity("Updated Successfully!").build()
+            val updateStatus2 = orderService.updateStatus2(id, status)
+            Response.status(Response.Status.OK).entity(updateStatus2).build()
         } catch (e: Exception) {
-            Response.status(Response.Status.NOT_FOUND).build()
+            Errors.generateExceptionResponse(e)
         }
     }
 }

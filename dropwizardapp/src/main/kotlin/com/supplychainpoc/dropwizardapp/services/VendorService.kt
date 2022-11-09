@@ -8,7 +8,7 @@ import com.supplychainpoc.dropwizardapp.exceptions.CustomException
 import com.supplychainpoc.dropwizardapp.exceptions.Errors
 import java.util.*
 
-class VendorService : IVendor {
+object VendorService : IVendor {
     private val vendors = mutableListOf<VendorsEntity>()
 
     override fun create(vendor: VendorsModel): VendorsEntity {

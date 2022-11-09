@@ -3,9 +3,11 @@ package com.supplychainpoc.dropwizardapp.services
 import com.supplychainpoc.dropwizardapp.api.OrderModel
 import com.supplychainpoc.dropwizardapp.entities.OrderEntity
 import com.supplychainpoc.dropwizardapp.enums.OrderStatus
+import com.supplychainpoc.dropwizardapp.exceptions.CustomException
+import com.supplychainpoc.dropwizardapp.exceptions.Errors
 import java.util.UUID
 
-class OrderService {
+object OrderService {
     private val orders = mutableListOf<OrderEntity>()
 
     fun create(order: OrderModel): OrderEntity {
@@ -35,5 +37,13 @@ class OrderService {
         } else {
             throw Exception("Not Found")
         }
+    }
+
+    fun updateStatus2(id: UUID, status: OrderStatus): OrderEntity {
+        val order = orders.find {
+            it.id == id
+        } ?: throw CustomException(Errors.ORDER_NOT_FOUND)
+        order.status = status
+        return order
     }
 }

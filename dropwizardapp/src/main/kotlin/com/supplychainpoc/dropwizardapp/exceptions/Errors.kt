@@ -8,6 +8,7 @@ object Errors {
     const val UNIT_NOT_FOUND = "UNIT_NOT_FOUND_ERROR"
     const val NO_SUCH_VENDOR_PRODUCT_FOUND = "NO_SUCH_VENDOR_PRODUCT_FOUND"
     const val NO_SUCH_VENDOR_FOUND = "NO_SUCH_VENDOR_FOUND_ERROR"
+    const val ORDER_NOT_FOUND = "ORDER_NOT_FOUND_ERROR"
 
     fun generateExceptionResponse(e: Exception): Response {
         return when (e.message) {
@@ -21,6 +22,9 @@ object Errors {
                 Response.status(Response.Status.NOT_FOUND).entity(e.toString()).build()
             }
             NO_SUCH_VENDOR_FOUND -> {
+                Response.status(Response.Status.NOT_FOUND).entity(e.toString()).build()
+            }
+            ORDER_NOT_FOUND -> {
                 Response.status(Response.Status.NOT_FOUND).entity(e.toString()).build()
             }
             else -> {

@@ -18,8 +18,8 @@ const val FF_RESOURCE = true
 @Path("/vendors")
 class VendorsResource {
 
-    private val vendorService: VendorService = VendorService()
-    private val vendorProductService = VendorProductService()
+    private val vendorService: VendorService = VendorService
+    private val vendorProductService = VendorProductService
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
